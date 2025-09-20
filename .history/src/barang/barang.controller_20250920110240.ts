@@ -7,31 +7,40 @@ import { Barang } from './barang.entity';
 export class BarangController {
   constructor(private readonly barangService: BarangService) {}
 
+  // @Post()
+  // async create(@Body() barang: Partial<Barang>) {
+  //   const data = await this.barangService.create(barang);
+  //   return {
+  //     statusCode: HttpStatus.CREATED,
+  //     message: 'Barang berhasil ditambahkan',
+  //     data,
+  //   };
+  // }
+
   @Post()
   async create(@Body() barang: Partial<Barang>) {
-    const data = await this.barangService.create(barang);
-    return {
-      statusCode: HttpStatus.CREATED,
-      message: 'Barang berhasil ditambahkan',
-      data,
-    };
+  // pastikan price jadi int
+  if (barang.harga !== undefined) {
+    barang.harga = parseInt(barang.harga as any, 10);
   }
+
+  const data = await this.barangService.create(barang);
+  return {
+    statusCode: HttpStatus.CREATED,
+    message: 'Barang berhasil ditambahkan',
+    data,
+  };
+}
 
   @Get()
   async findAll() {
     const data = await this.barangService.findAll();
-    const formatted = data.map(item => ({
-      ...item,
-      harga: parseInt(item.harga as any, 10),
-    }));
-  
     return {
       statusCode: HttpStatus.OK,
       message: 'Data barang berhasil diambil',
-      data: formatted,
+      data,
     };
   }
-  
 
   @Get(':id')
   async findOne(@Param('id') id: string) {

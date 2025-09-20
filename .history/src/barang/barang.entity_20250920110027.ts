@@ -18,7 +18,7 @@ export class Barang {
   @Column({ nullable: true })
   kelompok_barang: string;
 
-  @Column({ type: 'int' }) 
+  @Column()
   harga: number;
 
   @ManyToOne(() => Kategori, kategori => kategori.barang)

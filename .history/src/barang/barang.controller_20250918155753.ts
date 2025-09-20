@@ -20,18 +20,12 @@ export class BarangController {
   @Get()
   async findAll() {
     const data = await this.barangService.findAll();
-    const formatted = data.map(item => ({
-      ...item,
-      harga: parseInt(item.harga as any, 10),
-    }));
-  
     return {
       statusCode: HttpStatus.OK,
       message: 'Data barang berhasil diambil',
-      data: formatted,
+      data,
     };
   }
-  
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
