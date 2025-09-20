@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Sep 2025 pada 06.11
+-- Waktu pembuatan: 20 Sep 2025 pada 06.16
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `barang` (
   `kategori_id` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
   `kelompok_barang` varchar(255) DEFAULT NULL,
-  `harga` int(11) NOT NULL
+  `harga` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -41,28 +41,10 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama_barang`, `kategori_id`, `stok`, `kelompok_barang`, `harga`) VALUES
-(38, 'Laptop', 1, 10, 'Elektronik', 15000000),
-(39, 't', 2, 20, '2', 3000);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kategori`
---
-
-CREATE TABLE `kategori` (
-  `id` int(11) NOT NULL,
-  `nama_kategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `kategori`
---
-
-INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
-(1, 'Elektronik'),
-(2, 'Makanan'),
-(3, 'Pakaian');
+(38, 'Laptop', 1, 10, 'Elektronik', 0),
+(39, 'tyuuu', 3, 20, '2', 3000),
+(40, 'makaeenn', 2, 90, '2', 60000),
+(41, 'Laptop55', 1, 10, 'Elektronik', 15000000);
 
 --
 -- Indexes for dumped tables
@@ -76,12 +58,6 @@ ALTER TABLE `barang`
   ADD KEY `FK_b27b285150f58b56265f04bb0f8` (`kategori_id`);
 
 --
--- Indeks untuk tabel `kategori`
---
-ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -89,13 +65,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT untuk tabel `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
