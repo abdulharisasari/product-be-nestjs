@@ -33,7 +33,7 @@ CREATE TABLE `barang` (
   `kategori_id` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
   `kelompok_barang` varchar(255) DEFAULT NULL,
-  `harga` int(10) NOT NULL
+  `harga` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
